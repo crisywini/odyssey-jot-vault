@@ -1,0 +1,6 @@
+co\crisi\helidon\odyssey\jot\vault\Main.class
+co\crisi\helidon\odyssey\jot\vault\package-info.class
+co\crisi\helidon\odyssey\jot\vault\model\Message.class
+co\crisi\helidon\odyssey\jot\vault\providers\GreetingProvider.class
+co\crisi\helidon\odyssey\jot\vault\resources\SimpleGreetResource.class
+co\crisi\helidon\odyssey\jot\vault\resources\GreetResource.class
