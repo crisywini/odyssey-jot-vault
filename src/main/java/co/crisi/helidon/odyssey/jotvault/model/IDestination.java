@@ -19,5 +19,7 @@ public interface IDestination {
 
     List<IAccommodation> getAccommodations();
 
+    List<ITransportation> getTransportations();
+
 
 }
