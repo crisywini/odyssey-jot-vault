@@ -21,7 +21,7 @@ public class AccommodationJpaEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long accommodationId;
 
-    @OneToMany
+    @ManyToOne
     private DestinationJpaEntity destination;
 
     private String name;

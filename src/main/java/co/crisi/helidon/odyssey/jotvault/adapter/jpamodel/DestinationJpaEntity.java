@@ -26,6 +26,7 @@ public class DestinationJpaEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long destinationId;
 
+    @ManyToOne
     private ItineraryJpaEntity itinerary;
 
     private String name;

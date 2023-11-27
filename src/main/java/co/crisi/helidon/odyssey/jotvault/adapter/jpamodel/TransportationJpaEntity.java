@@ -23,6 +23,7 @@ public class TransportationJpaEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long transportationId;
 
+    @ManyToOne
     private DestinationJpaEntity destination;
 
     private Mode mode;

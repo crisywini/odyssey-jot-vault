@@ -34,5 +34,8 @@ public class ItineraryJpaEntity implements Serializable {
     @Column(name = "end_date")
     private LocalDate endDate;
 
+    @OneToMany(mappedBy = "itinerary")
+    private List<DestinationJpaEntity> destinations;
+
 
 }
