@@ -5,10 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -20,6 +17,8 @@ import java.util.List;
 public class UserJpaEntity implements Serializable {
 
     @Id
+    @Column(name = "user_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
     private String username;
@@ -33,6 +32,9 @@ public class UserJpaEntity implements Serializable {
 
     @Column(name = "last_name")
     private String lastName;
+
+    @OneToMany(mappedBy = "user")
+    private List<ItineraryJpaEntity> itineraries;
 
 
 }
