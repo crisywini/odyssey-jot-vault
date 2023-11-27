@@ -24,7 +24,6 @@ public class AccommodationJpaEntity implements Serializable {
     @OneToMany
     private DestinationJpaEntity destination;
 
-
     private String name;
 
     private String address;
