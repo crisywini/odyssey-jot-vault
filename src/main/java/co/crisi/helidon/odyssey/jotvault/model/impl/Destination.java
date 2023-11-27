@@ -1,9 +1,11 @@
 package co.crisi.helidon.odyssey.jotvault.model.impl;
 
+import co.crisi.helidon.odyssey.jotvault.model.IAccommodation;
 import co.crisi.helidon.odyssey.jotvault.model.IDestination;
 import co.crisi.helidon.odyssey.jotvault.model.IItinerary;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Destination implements IDestination {
 
@@ -15,9 +17,11 @@ public class Destination implements IDestination {
 
     private String address;
 
-    private LocalDate checkInDate;
+    private LocalDate startDate;
 
-    private LocalDate checkOutDate;
+    private LocalDate endDate;
+
+    private List<IAccommodation> accommodations;
 
     @Override
     public Long getDestinationId() {
@@ -40,12 +44,17 @@ public class Destination implements IDestination {
     }
 
     @Override
-    public LocalDate getCheckInDate() {
-        return checkInDate;
+    public LocalDate getStartDate() {
+        return startDate;
     }
 
     @Override
-    public LocalDate getCheckOutDate() {
-        return checkOutDate;
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    @Override
+    public List<IAccommodation> getAccommodations() {
+        return accommodations;
     }
 }
