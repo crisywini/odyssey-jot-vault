@@ -1,5 +1,5 @@
 
-package co.crisi.helidon.odyssey.jotvault;
+package co.crisi.helidon.odyssey.jotvault.service;
 
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -25,11 +25,11 @@ public class GreetingProvider {
         this.message.set(message);
     }
 
-    String getMessage() {
+    public String getMessage() {
         return message.get();
     }
 
-    void setMessage(String message) {
+    public void setMessage(String message) {
         this.message.set(message);
     }
 }
