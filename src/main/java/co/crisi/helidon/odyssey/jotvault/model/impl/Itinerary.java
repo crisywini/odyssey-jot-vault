@@ -1,9 +1,11 @@
 package co.crisi.helidon.odyssey.jotvault.model.impl;
 
+import co.crisi.helidon.odyssey.jotvault.model.IDestination;
 import co.crisi.helidon.odyssey.jotvault.model.IItinerary;
 import co.crisi.helidon.odyssey.jotvault.model.IUser;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Itinerary implements IItinerary {
 
@@ -16,6 +18,8 @@ public class Itinerary implements IItinerary {
     private LocalDate startDate;
 
     private LocalDate endDate;
+
+    private List<IDestination> destinations;
 
     @Override
     public Long getItineraryId() {
@@ -40,5 +44,10 @@ public class Itinerary implements IItinerary {
     @Override
     public LocalDate getEndDate() {
         return endDate;
+    }
+
+    @Override
+    public List<IDestination> getDestinations() {
+        return destinations;
     }
 }
