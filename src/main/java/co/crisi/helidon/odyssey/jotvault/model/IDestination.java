@@ -21,5 +21,7 @@ public interface IDestination {
 
     List<ITransportation> getTransportations();
 
+    List<IActivity> getActivities();
+
 
 }

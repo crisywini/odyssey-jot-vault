@@ -1,9 +1,6 @@
 package co.crisi.helidon.odyssey.jotvault.model.impl;
 
-import co.crisi.helidon.odyssey.jotvault.model.IAccommodation;
-import co.crisi.helidon.odyssey.jotvault.model.IDestination;
-import co.crisi.helidon.odyssey.jotvault.model.IItinerary;
-import co.crisi.helidon.odyssey.jotvault.model.ITransportation;
+import co.crisi.helidon.odyssey.jotvault.model.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -25,6 +22,8 @@ public class Destination implements IDestination {
     private List<IAccommodation> accommodations;
 
     private List<ITransportation> transportations;
+
+    private List<IActivity> activities;
 
     @Override
     public Long getDestinationId() {
@@ -64,5 +63,10 @@ public class Destination implements IDestination {
     @Override
     public List<ITransportation> getTransportations() {
         return transportations;
+    }
+
+    @Override
+    public List<IActivity> getActivities() {
+        return activities;
     }
 }
