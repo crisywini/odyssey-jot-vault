@@ -17,6 +17,8 @@
     <properties>
         <io.helidon.integrations.cdi.hibernate-version>2.0.0</io.helidon.integrations.cdi.hibernate-version>
         <org.postgresql-version>42.2.7</org.postgresql-version>
+        <org.lombok-version>1.18.30</org.lombok-version>
+
     </properties>
 
     <dependencies>
@@ -81,7 +83,13 @@
             <version>1.2</version>
         </dependency>
 
-
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${org.lombok-version}</version>
+            <scope>provided</scope>
+        </dependency>
 
     </dependencies>
 
