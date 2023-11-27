@@ -1,5 +1,7 @@
 package co.crisi.helidon.odyssey.jotvault.model;
 
+import java.util.List;
+
 public interface IUser {
 
     Long getUserId();
@@ -13,5 +15,7 @@ public interface IUser {
     String getFirstName();
 
     String getLastName();
+
+    List<IItinerary> getItineraries();
 
 }

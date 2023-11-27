@@ -1,6 +1,9 @@
 package co.crisi.helidon.odyssey.jotvault.model.impl;
 
+import co.crisi.helidon.odyssey.jotvault.model.IItinerary;
 import co.crisi.helidon.odyssey.jotvault.model.IUser;
+
+import java.util.List;
 
 /**
  * Attributes: UserID (Primary Key), Username, Email, Password, FirstName, LastName.
@@ -18,6 +21,8 @@ public class User implements IUser {
     private String firstName;
 
     private String lastName;
+
+    private List<IItinerary> itineraries;
 
 
     @Override
@@ -48,5 +53,10 @@ public class User implements IUser {
     @Override
     public String getLastName() {
         return lastName;
+    }
+
+    @Override
+    public List<IItinerary> getItineraries() {
+        return itineraries;
     }
 }
