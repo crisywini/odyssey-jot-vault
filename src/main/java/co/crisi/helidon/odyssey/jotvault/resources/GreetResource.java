@@ -1,5 +1,5 @@
 
-package co.crisi.helidon.odyssey.jotvault;
+package co.crisi.helidon.odyssey.jotvault.resources;
 
 import java.util.Collections;
 
@@ -16,6 +16,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import co.crisi.helidon.odyssey.jotvault.service.GreetingProvider;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
