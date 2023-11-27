@@ -6,20 +6,26 @@
                                  http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
     <persistence-unit name="aptrestPU" transaction-type="JTA">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <jta-data-source>airportDataSource</jta-data-source>
+        <jta-data-source>odysseyDataSource</jta-data-source>
+        <class>co.crisi.helidon.odyssey.jotvault.adapter.jpamodel.UserJpaEntity</class>
+        <class>co.crisi.helidon.odyssey.jotvault.adapter.jpamodel.ItineraryJpaEntity</class>
+        <class>co.crisi.helidon.odyssey.jotvault.adapter.jpamodel.DestinationJpaEntity</class>
+        <class>co.crisi.helidon.odyssey.jotvault.adapter.jpamodel.AccommodationJpaEntity</class>
+        <class>co.crisi.helidon.odyssey.jotvault.adapter.jpamodel.ActivityJpaEntity</class>
+        <class>co.crisi.helidon.odyssey.jotvault.adapter.jpamodel.TransportationJpaEntity</class>
 
 
         <properties>
 
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/odyssey_jot_vault_db"/>
-            <property name="javax.persistence.jdbc.user" value="postgres" />
-            <property name="javax.persistence.jdbc.password" value="root" />
-            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
-            <property name="hibernate.archive.autodetection" value="class" />
-            <property name="hibernate.show_sql" value="true" />
-            <property name="hibernate.format_sql" value="true" />
-            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <property name="javax.persistence.jdbc.user" value="postgres"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <property name="hibernate.archive.autodetection" value="class"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
 
         </properties>
     </persistence-unit>

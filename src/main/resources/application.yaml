@@ -3,7 +3,7 @@ server:
 javax:
   sql:
     DataSource:
-      airportDataSource:
+      odysseyDataSource:
         dataSourceClassName: org.postgresql.ds.PGSimpleDataSource
         dataSource:
           url: jdbc:postgresql://localhost:5432/odyssey_jot_vault_db
