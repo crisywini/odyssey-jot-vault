@@ -1,6 +1,6 @@
 
 # 1st stage, build the app
-FROM maven:3.8.4-openjdk-17-slim as build
+FROM maven:3.6.3-jdk-11-slim as build
 
 WORKDIR /helidon
 
@@ -20,6 +20,6 @@ RUN echo "done!"
 
 FROM debian:stretch-slim
 WORKDIR /helidon
-COPY --from=build /helidon/target/odyssey-jot-vault-jri ./
+COPY --from=build /helidon/target/odyssey-jotvault-jri ./
 ENTRYPOINT ["/bin/bash", "/helidon/bin/start"]
 EXPOSE 8080

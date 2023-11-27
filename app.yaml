@@ -1,13 +1,13 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: odyssey-jot-vault
+  name: odyssey-jotvault
   labels:
-    app: odyssey-jot-vault
+    app: odyssey-jotvault
 spec:
   type: NodePort
   selector:
-    app: odyssey-jot-vault
+    app: odyssey-jotvault
   ports:
   - port: 8080
     targetPort: 8080
@@ -16,21 +16,22 @@ spec:
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: odyssey-jot-vault
+  name: odyssey-jotvault
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: odyssey-jot-vault
+      app: odyssey-jotvault
   template:
     metadata:
       labels:
-        app: odyssey-jot-vault
+        app: odyssey-jotvault
         version: v1
     spec:
       containers:
-      - name: odyssey-jot-vault
-        image: odyssey-jot-vault
+      - name: odyssey-jotvault
+        image: odyssey-jotvault
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
+---

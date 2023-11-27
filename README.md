@@ -1,26 +1,17 @@
-# odyssey-jot-vault
+# Helidon Quickstart MP
 
 Sample Helidon MP project that includes multiple REST operations.
 
 ## Build and run
 
-
-With JDK21
+With JDK11+
 ```bash
 mvn package
-java -jar target/odyssey-jot-vault.jar
+java -jar target/odyssey-jotvault.jar
 ```
 
 ## Exercise the application
 
-Basic:
-```
-curl -X GET http://localhost:8080/simple-greet
-Hello World!
-```
-
-
-JSON:
 ```
 curl -X GET http://localhost:8080/greet
 {"message":"Hello World!"}
@@ -34,140 +25,152 @@ curl -X GET http://localhost:8080/greet/Jose
 {"message":"Hola Jose!"}
 ```
 
-
-
-## Try metrics
-
-```
-# Prometheus Format
-curl -s -X GET http://localhost:8080/metrics
-# TYPE base:gc_g1_young_generation_count gauge
-. . .
-
-# JSON Format
-curl -H 'Accept: application/json' -X GET http://localhost:8080/metrics
-{"base":...
-. . .
-```
-
-
-
-## Try metrics
-
-```
-# Prometheus Format
-curl -s -X GET http://localhost:8080/metrics
-# TYPE base:gc_g1_young_generation_count gauge
-. . .
-
-# JSON Format
-curl -H 'Accept: application/json' -X GET http://localhost:8080/metrics
-{"base":...
-. . .
-```
-
-
-## Try health
+## Try health and metrics
 
 ```
 curl -s -X GET http://localhost:8080/health
 {"outcome":"UP",...
+. . .
+
+# Prometheus Format
+curl -s -X GET http://localhost:8080/metrics
+# TYPE base:gc_g1_young_generation_count gauge
+. . .
+
+# JSON Format
+curl -H 'Accept: application/json' -X GET http://localhost:8080/metrics
+{"base":...
+. . .
 
 ```
 
-
-## Building a Native Image
-
-The generation of native binaries requires an installation of GraalVM 22.1.0+.
-
-You can build a native binary using Maven as follows:
+## Build the Docker Image
 
 ```
-mvn -Pnative-image install -DskipTests
+docker build -t odyssey-jotvault .
 ```
 
-The generation of the executable binary may take a few minutes to complete depending on
-your hardware and operating system. When completed, the executable file will be available
-under the `target` directory and be named after the artifact ID you have chosen during the
-project generation phase.
-
-
-
-## Building the Docker Image
+## Start the application with Docker
 
 ```
-docker build -t odyssey-jot-vault .
+docker run --rm -p 8080:8080 odyssey-jotvault:latest
 ```
 
-## Running the Docker Image
+Exercise the application as described above
+
+## Deploy the application to Kubernetes
 
 ```
-docker run --rm -p 8080:8080 odyssey-jot-vault:latest
-```
-
-Exercise the application as described above.
-                                
-
-## Run the application in Kubernetes
-
-If you donÃ¢â‚¬â„¢t have access to a Kubernetes cluster, you can [install one](https://helidon.io/docs/latest/#/about/kubernetes) on your desktop.
-
-### Verify connectivity to cluster
-
-```
-kubectl cluster-info                        # Verify which cluster
-kubectl get pods                            # Verify connectivity to cluster
-```
-
-### Deploy the application to Kubernetes
-
-```
-kubectl create -f app.yaml                  # Deploy application
-kubectl get pods                            # Wait for quickstart pod to be RUNNING
-kubectl get service  odyssey-jot-vault         # Get service info
+kubectl cluster-info                         # Verify which cluster
+kubectl get pods                             # Verify connectivity to cluster
+kubectl create -f app.yaml                   # Deploy application
+kubectl get pods                             # Wait for quickstart pod to be RUNNING
+kubectl get service helidon-quickstart-mp    # Verify deployed service
 ```
 
 Note the PORTs. You can now exercise the application as you did before but use the second
 port number (the NodePort) instead of 8080.
 
-After youÃ¢â‚¬â„¢re done, cleanup.
+After youâ€™re done, cleanup.
 
 ```
 kubectl delete -f app.yaml
 ```
-                                
 
-## Building a Custom Runtime Image
+## Build a native image with GraalVM
 
-Build the custom runtime image using the jlink image profile:
+GraalVM allows you to compile your programs ahead-of-time into a native
+ executable. See https://www.graalvm.org/docs/reference-manual/aot-compilation/
+ for more information.
+
+You can build a native executable in 2 different ways:
+* With a local installation of GraalVM
+* Using Docker
+
+### Local build
+
+Download Graal VM at https://www.graalvm.org/downloads, the version
+ currently supported for Helidon is `20.1.0`.
 
 ```
+# Setup the environment
+export GRAALVM_HOME=/path
+# build the native executable
+mvn package -Pnative-image
+```
+
+You can also put the Graal VM `bin` directory in your PATH, or pass
+ `-DgraalVMHome=/path` to the Maven command.
+
+See https://github.com/oracle/helidon-build-tools/tree/master/helidon-maven-plugin#goal-native-image
+ for more information.
+
+Start the application:
+
+```
+./target/odyssey-jotvault
+```
+
+### Multi-stage Docker build
+
+Build the "native" Docker Image
+
+```
+docker build -t odyssey-jotvault-native -f Dockerfile.native .
+```
+
+Start the application:
+
+```
+docker run --rm -p 8080:8080 odyssey-jotvault-native:latest
+```
+
+
+## Build a Java Runtime Image using jlink
+
+You can build a custom Java Runtime Image (JRI) containing the application jars and the JDK modules
+on which they depend. This image also:
+
+* Enables Class Data Sharing by default to reduce startup time.
+* Contains a customized `start` script to simplify CDS usage and support debug and test modes.
+
+You can build a custom JRI in two different ways:
+* Local
+* Using Docker
+
+
+### Local build
+
+```
+# build the JRI
 mvn package -Pjlink-image
 ```
 
-This uses the helidon-maven-plugin to perform the custom image generation.
-After the build completes it will report some statistics about the build including the reduction in image size.
+See https://github.com/oracle/helidon-build-tools/tree/master/helidon-maven-plugin#goal-jlink-image
+ for more information.
 
-The target/odyssey-jot-vault-jri directory is a self contained custom image of your application. It contains your application,
-its runtime dependencies and the JDK modules it depends on. You can start your application using the provide start script:
-
-```
-./target/odyssey-jot-vault-jri/bin/start
-```
-
-Class Data Sharing (CDS) Archive
-Also included in the custom image is a Class Data Sharing (CDS) archive that improves your applicationÃ¢â‚¬â„¢s startup
-performance and in-memory footprint. You can learn more about Class Data Sharing in the JDK documentation.
-
-The CDS archive increases your image size to get these performance optimizations. It can be of significant size (tens of MB).
-The size of the CDS archive is reported at the end of the build output.
-
-If youÃ¢â‚¬â„¢d rather have a smaller image size (with a slightly increased startup time) you can skip the creation of the CDS
-archive by executing your build like this:
+Start the application:
 
 ```
-mvn package -Pjlink-image -Djlink.image.addClassDataSharingArchive=false
+./target/odyssey-jotvault-jri/bin/start
 ```
 
-For more information on available configuration options see the helidon-maven-plugin documentation.
-                                
+### Multi-stage Docker build
+
+Build the JRI as a Docker Image
+
+```
+docker build -t odyssey-jotvault-jri -f Dockerfile.jlink .
+```
+
+Start the application:
+
+```
+docker run --rm -p 8080:8080 odyssey-jotvault-jri:latest
+```
+
+See the start script help:
+
+```
+docker run --rm odyssey-jotvault-jri:latest --help
+```
