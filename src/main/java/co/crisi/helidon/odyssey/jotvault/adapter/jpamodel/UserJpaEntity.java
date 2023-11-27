@@ -2,6 +2,7 @@ package co.crisi.helidon.odyssey.jotvault.adapter.jpamodel;
 
 import co.crisi.helidon.odyssey.jotvault.model.IItinerary;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +13,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "traveler")
 public class UserJpaEntity implements Serializable {
