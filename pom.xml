@@ -6,7 +6,7 @@
     <parent>
         <groupId>io.helidon.applications</groupId>
         <artifactId>helidon-mp</artifactId>
-        <version>2.6.4</version>
+        <version>2.0.1</version>
         <relativePath/>
     </parent>
     <groupId>co.crisi.helidon.odyssey.jotvault</groupId>
@@ -15,6 +15,9 @@
     <name>odyssey-jotvault</name>
 
     <properties>
+        <io.helidon.integrations.cdi.hibernate-version>2.0.0</io.helidon.integrations.cdi.hibernate-version>
+        <org.postgresql-version>42.2.7</org.postgresql-version>
+        <org.lombok-version>1.18.30</org.lombok-version>
 
     </properties>
 
@@ -30,15 +33,69 @@
             <optional>true</optional>
         </dependency>
         <dependency>
+            <groupId>jakarta.activation</groupId>
+            <artifactId>jakarta.activation-api</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>io.helidon.microprofile.tests</groupId>
-            <artifactId>helidon-microprofile-tests-junit5</artifactId>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- JPA CDI integrations -->
+
+
+        <dependency>
+            <groupId>io.helidon.integrations.cdi</groupId>
+            <artifactId>helidon-integrations-cdi-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.helidon.integrations.cdi</groupId>
+            <artifactId>helidon-integrations-cdi-jta-weld</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.helidon.integrations.cdi</groupId>
+            <artifactId>helidon-integrations-cdi-datasource-hikaricp</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.helidon.integrations.cdi</groupId>
+            <artifactId>helidon-integrations-cdi-hibernate</artifactId>
+            <version>${io.helidon.integrations.cdi.hibernate-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${org.postgresql-version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <version>2.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>javax.transaction-api</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${org.lombok-version}</version>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
 
     <build>

@@ -1,0 +1,11 @@
+server:
+  port: 8080
+javax:
+  sql:
+    DataSource:
+      odysseyDataSource:
+        dataSourceClassName: org.postgresql.ds.PGSimpleDataSource
+        dataSource:
+          url: jdbc:postgresql://localhost:5432/odyssey_jot_vault_db
+          user: postgres
+          password: root

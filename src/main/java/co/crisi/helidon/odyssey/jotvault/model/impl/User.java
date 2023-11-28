@@ -2,12 +2,14 @@ package co.crisi.helidon.odyssey.jotvault.model.impl;
 
 import co.crisi.helidon.odyssey.jotvault.model.IItinerary;
 import co.crisi.helidon.odyssey.jotvault.model.IUser;
+import lombok.Builder;
 
 import java.util.List;
 
 /**
  * Attributes: UserID (Primary Key), Username, Email, Password, FirstName, LastName.
  */
+@Builder
 public class User implements IUser {
 
     private Long userId;
