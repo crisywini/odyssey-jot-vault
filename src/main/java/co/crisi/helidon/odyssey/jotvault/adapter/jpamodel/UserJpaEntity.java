@@ -1,6 +1,5 @@
 package co.crisi.helidon.odyssey.jotvault.adapter.jpamodel;
 
-import co.crisi.helidon.odyssey.jotvault.model.IItinerary;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -35,8 +34,6 @@ public class UserJpaEntity implements Serializable {
     @Column(name = "last_name")
     private String lastName;
 
-    @OneToMany(mappedBy = "user")
-    private List<ItineraryJpaEntity> itineraries;
 
 
 }

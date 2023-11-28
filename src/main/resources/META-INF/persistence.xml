@@ -4,15 +4,10 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
                                  http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
-    <persistence-unit name="aptrestPU" transaction-type="JTA">
+    <persistence-unit name="odysseyPU" transaction-type="JTA">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <jta-data-source>odysseyDataSource</jta-data-source>
         <class>co.crisi.helidon.odyssey.jotvault.adapter.jpamodel.UserJpaEntity</class>
-        <class>co.crisi.helidon.odyssey.jotvault.adapter.jpamodel.ItineraryJpaEntity</class>
-        <class>co.crisi.helidon.odyssey.jotvault.adapter.jpamodel.DestinationJpaEntity</class>
-        <class>co.crisi.helidon.odyssey.jotvault.adapter.jpamodel.AccommodationJpaEntity</class>
-        <class>co.crisi.helidon.odyssey.jotvault.adapter.jpamodel.ActivityJpaEntity</class>
-        <class>co.crisi.helidon.odyssey.jotvault.adapter.jpamodel.TransportationJpaEntity</class>
 
 
         <properties>
@@ -25,7 +20,7 @@
             <property name="hibernate.archive.autodetection" value="class"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
-            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.hbm2ddl.auto" value="validate"/>
 
         </properties>
     </persistence-unit>

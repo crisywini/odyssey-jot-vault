@@ -87,7 +87,7 @@ public class UserProvider implements UserService {
                 .firstName(newEntityInfo.getFirstName())
                 .lastName(newEntityInfo.getLastName())
                 .build());
-        
+
         return User.builder()
                 .userId(updated.getUserId())
                 .username(updated.getUsername())

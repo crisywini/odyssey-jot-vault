@@ -16,7 +16,7 @@ import java.util.Optional;
 public class UserJpaRepository implements UserRepository {
 
     @PersistenceContext
-    protected EntityManager entityManager;
+    EntityManager entityManager;
 
 
     @Transactional
