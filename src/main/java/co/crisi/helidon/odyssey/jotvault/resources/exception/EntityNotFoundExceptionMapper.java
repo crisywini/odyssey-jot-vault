@@ -1,4 +1,4 @@
-package co.crisi.helidon.odyssey.jotvault.resources;
+package co.crisi.helidon.odyssey.jotvault.resources.exception;
 
 import co.crisi.helidon.odyssey.jotvault.service.exception.EntityNotFoundException;
 
