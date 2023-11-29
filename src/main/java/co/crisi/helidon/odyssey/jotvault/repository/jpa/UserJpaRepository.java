@@ -31,7 +31,7 @@ public class UserJpaRepository implements UserRepository {
     public Optional<UserJpaEntity> findById(Long id) {
         var query = entityManager.createQuery("SELECT u FROM UserJpaEntity u WHERE u.userId = :id", UserJpaEntity.class);
         query.setParameter("id", id);
-        return Optional.ofNullable(query.getSingleResult());
+        return query.getResultList().stream().findAny();
     }
 
     @Transactional

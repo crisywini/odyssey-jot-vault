@@ -1,6 +1,7 @@
-package co.crisi.helidon.odyssey.jotvault.resources.user;
+package co.crisi.helidon.odyssey.jotvault.resources.extract;
 
-import co.crisi.helidon.odyssey.jotvault.service.UserService;
+import co.crisi.helidon.odyssey.jotvault.model.IUser;
+import co.crisi.helidon.odyssey.jotvault.service.GetByIdProvider;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -15,11 +16,11 @@ import javax.ws.rs.core.Response;
 @RequestScoped
 public class GetUserResource {
 
-    private final UserService userService;
+    private final GetByIdProvider<IUser, Long> getUserByIdProvider;
 
     @Inject
-    public GetUserResource(UserService userService) {
-        this.userService = userService;
+    public GetUserResource(GetByIdProvider<IUser, Long> getUserByIdProvider) {
+        this.getUserByIdProvider = getUserByIdProvider;
     }
 
 
@@ -27,7 +28,7 @@ public class GetUserResource {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getUserById(@PathParam("id") Long id) {
-        return Response.ok(userService.getById(id)).build();
+        return Response.ok(getUserByIdProvider.run(id)).build();
     }
 
 }

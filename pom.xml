@@ -92,6 +92,12 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- CORS -->
+        <dependency>
+            <groupId>io.helidon.microprofile</groupId>
+            <artifactId>helidon-microprofile-cors</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
