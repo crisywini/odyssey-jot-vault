@@ -98,6 +98,12 @@
             <artifactId>helidon-microprofile-cors</artifactId>
         </dependency>
 
+        <!-- Circuit breaker -->
+
+        <!-- https://mvnrepository.com/artifact/io.helidon.microprofile/helidon-microprofile-fault-tolerance -->
+        
+
+
     </dependencies>
 
     <build>
