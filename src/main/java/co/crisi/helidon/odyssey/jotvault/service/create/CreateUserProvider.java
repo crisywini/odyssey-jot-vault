@@ -8,7 +8,7 @@ import javax.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class CreateUserProvider implements CreateProvider<IUser> {
     @Override
-    public IUser create(IUser object) {
+    public IUser run(IUser object) {
         return null;
     }
 }

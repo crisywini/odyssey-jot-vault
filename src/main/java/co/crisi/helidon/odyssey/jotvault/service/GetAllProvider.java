@@ -1,4 +1,8 @@
 package co.crisi.helidon.odyssey.jotvault.service;
 
-public interface GetAllProvider {
+import java.util.List;
+
+public interface GetAllProvider <T> {
+
+    List<T> run();
 }
