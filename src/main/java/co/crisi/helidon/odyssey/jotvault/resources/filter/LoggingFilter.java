@@ -10,7 +10,7 @@ import java.io.IOException;
 
 @Slf4j
 @Provider
-@Priority(1)
+@Priority(2)
 public class LoggingFilter implements ContainerRequestFilter {
 
     @Override

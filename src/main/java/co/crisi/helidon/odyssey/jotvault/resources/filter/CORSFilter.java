@@ -13,7 +13,7 @@ import java.util.List;
 
 @Slf4j
 @Provider
-@Priority(2)
+@Priority(1)
 public class CORSFilter implements ContainerResponseFilter {
 
     private final List<String> origins = List.of("http://localhost:8080");
