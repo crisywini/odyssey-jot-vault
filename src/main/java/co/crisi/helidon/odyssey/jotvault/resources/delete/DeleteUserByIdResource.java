@@ -4,9 +4,8 @@ import co.crisi.helidon.odyssey.jotvault.service.DeleteByIdProvider;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Path("/users")
@@ -20,7 +19,7 @@ public class DeleteUserByIdResource {
         this.deleteUserByIdProvider = deleteUserByIdProvider;
     }
 
-    @GET
+    @DELETE
     @Path("/{id}")
     public Response deleteById(@PathParam("id") Long id) {
         deleteUserByIdProvider.run(id);
