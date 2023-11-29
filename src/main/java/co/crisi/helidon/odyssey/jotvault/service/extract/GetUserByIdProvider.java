@@ -4,6 +4,7 @@ import co.crisi.helidon.odyssey.jotvault.model.IUser;
 import co.crisi.helidon.odyssey.jotvault.model.impl.User;
 import co.crisi.helidon.odyssey.jotvault.repository.UserRepository;
 import co.crisi.helidon.odyssey.jotvault.service.GetByIdProvider;
+import co.crisi.helidon.odyssey.jotvault.service.exception.EntityNotFoundException;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -22,7 +23,7 @@ public class GetUserByIdProvider implements GetByIdProvider<IUser, Long> {
     @Override
     public IUser run(Long id) {
         var entity = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException(
+                .orElseThrow(() -> new EntityNotFoundException(
                         String.format("The user was with id %d not found!", id)));
         return User.builder()
                 .userId(entity.getUserId())
