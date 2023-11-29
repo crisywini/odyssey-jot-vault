@@ -7,6 +7,7 @@ import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 import java.io.IOException;
+import java.util.List;
 
 @Provider
 @Priority(Priorities.AUTHENTICATION)
@@ -21,7 +22,7 @@ public class AuthenticationFilter implements ContainerRequestFilter {
     }
 
     private boolean checkAuthorizationHeader(ContainerRequestContext context) {
-        return context.getHeaders().get("Authorization")
+        return context.getHeaders().getOrDefault("Authorization", List.of())
                 .contains("iconic");
     }
 
