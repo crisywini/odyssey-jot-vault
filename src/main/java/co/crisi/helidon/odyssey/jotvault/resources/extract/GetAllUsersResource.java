@@ -1,6 +1,7 @@
 package co.crisi.helidon.odyssey.jotvault.resources.extract;
 
-import co.crisi.helidon.odyssey.jotvault.service.UserService;
+import co.crisi.helidon.odyssey.jotvault.model.IUser;
+import co.crisi.helidon.odyssey.jotvault.service.GetAllProvider;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -14,17 +15,17 @@ import javax.ws.rs.core.Response;
 @ApplicationScoped
 public class GetAllUsersResource {
 
-    private final UserService userService;
+    private final GetAllProvider<IUser> getAllUsersProvider;
 
     @Inject
-    public GetAllUsersResource(UserService userService) {
-        this.userService = userService;
+    public GetAllUsersResource(GetAllProvider<IUser> getAllUsersProvider) {
+        this.getAllUsersProvider = getAllUsersProvider;
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
-        return Response.ok(userService.findAll()).build();
+        return Response.ok(getAllUsersProvider.run()).build();
     }
 
 

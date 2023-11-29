@@ -10,7 +10,7 @@ import javax.inject.Inject;
 
 @ApplicationScoped
 public class GetUserByIdProvider implements GetByIdProvider<IUser, Long> {
-    
+
     private final UserRepository repository;
 
     @Inject
