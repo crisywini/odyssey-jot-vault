@@ -97,7 +97,13 @@
             <groupId>io.helidon.microprofile</groupId>
             <artifactId>helidon-microprofile-cors</artifactId>
         </dependency>
-        
+        <dependency>
+            <groupId>org.spockframework</groupId>
+            <artifactId>spock-core</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+
 
     </dependencies>
 
